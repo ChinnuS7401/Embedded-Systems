@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <float.h> // For handling errors with large values
+
+int main() {
+char op; // Operator (+, -, *, /)
+double a, b, res; // Operands and result
+
+// Input operator
+printf("Enter an operator (+, -, *, /): ");
+scanf(" %c", &op);
+
+// Input operands
+printf("Enter two operands: ");
+scanf("%lf %lf", &a, &b);
+
+// Perform operation based on operator
+switch (op) {
+case '+':
+res = a + b;
+break;
+case '-':
+res = a - b;
+break;
+case '*':
+res = a * b;
+break;
+case '/':
+if (b != 0) {
+res = a / b;
+} else {
+printf("Error! Division by zero.\n");
+return 1; // Exit with error
+}
+break;
+default:
+printf("Error! Incorrect operator.\n");
+return 1; // Exit with error
+}
+
+// Display result
+printf("Result: %.2lf\n", res);
+return 0;
+}
