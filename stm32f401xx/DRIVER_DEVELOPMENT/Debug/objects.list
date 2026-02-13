@@ -1,0 +1,6 @@
+"./DRIVERSS/Src/stm32f401xx_gpio_driver.o"
+"./Src/main.o"
+"./Src/syscalls.o"
+"./Src/sysmem.o"
+"./Src/toggle.o"
+"./Startup/startup_stm32f401vctx.o"

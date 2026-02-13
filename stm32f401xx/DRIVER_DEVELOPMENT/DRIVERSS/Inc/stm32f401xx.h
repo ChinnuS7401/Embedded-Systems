@@ -1,0 +1,227 @@
+/*
+ * stm32f401xx.h
+ *
+ *  Created on: 09-Feb-2026
+ *      Author: chinn
+ */
+/*
+ * stm32f401xx.h
+ *
+ *  Created on: 06-Feb-2026
+ *      Author: chinn
+ */
+
+#ifndef INC_STM32F401XX_H_
+#define INC_STM32F401XX_H_
+#include <stdio.h>
+#include <stdint.h>
+
+#define __vo  volatile
+
+
+//define memory base address
+#define FLASH_BASEADDR 	0X08000000U
+#define ROM_BASEADDR   	0X1FFF0000U
+#define SRAM1_BASEADDR 	0X2001C000U
+#define SRAM_BASEADDR  	SRAM1_BASEADDR
+
+//define peripheral bus base address
+#define APB1PERPH_BASEADDR 		0x40000000U
+#define APB2PERIPH_BASEADDR 	0x40010000U
+#define AHB1PERIPH_BASEADDR		0x40020000U
+#define AHB2PERIPH_BASEADDR		0x50000000U
+
+//Base address of the peripherals in AHB1 BUS
+#define GPIOA_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x0000)
+#define GPIOB_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x0400)
+#define GPIOC_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x0800)
+#define GPIOD_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x0C00)
+#define GPIOE_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x1000)
+#define GPIOF_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x1400)
+#define GPIOG_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x1800)
+#define GPIOH_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x1C00)
+#define CRC_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x3000)
+#define RCC_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x3800)
+#define FLASH_INTERFACE_REGISTER_BASEADDR 	(AHB1PERIPH_BASEADDR +0x3C00)
+#define DMA1_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x6000)
+#define DMA2_PERIPH_BASEADDR 	(AHB1PERIPH_BASEADDR +0x6400)
+
+//Base address of the peripherals in AHB2 bus
+#define USB_OTG_FS_PERIPH_BASEADDR 	(AHB2PERIPH_BASEADDR +0x0000)
+
+//Base address of the peripherals in APB1 bus
+#define TIM2_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x0000)
+#define TIM3_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x0400)
+#define TIM4_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x0800)
+#define TIM5_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x0C00)
+#define RYC_BKP_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x2800)
+#define WWDG_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x2C00)
+#define IWDG_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x3000)
+#define I2S2_ext_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x3400)
+#define SPI2_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x3800)
+#define SPI3_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x3C00)
+#define I2S3_ext_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x4000)
+#define USART2_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x4400)
+#define I2C1_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x5400)
+#define I2C2_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x5800)
+#define I2C3_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x5C00)
+#define PWR_PERIPH_BASEADDR	(APB1PERPH_BASEADDR +0x7000)
+
+//Base address of peripherals in APB2 Bus
+#define TIM1_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x0000)
+#define USART1_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x1000)
+#define USART6_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x1400)
+#define ADC1_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x2000)
+#define SDIO_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x2C00)
+#define SPI1_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x3000)
+#define SPI4_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x3400)
+#define SYSCFG_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x3800)
+#define EXTI_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x3C00)
+#define TIM9_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x4000)
+#define TIM10_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x4400)
+#define TIM11_PERIPH_BASEADDR	(APB2PERPH_BASEADDR +0x4800)
+
+
+//GPIO Register definition
+
+typedef struct{
+	__vo uint32_t MODER;
+	__vo uint32_t OTYPER;
+	__vo uint32_t OSPEEDR;
+	__vo uint32_t PUPDR;
+	__vo uint32_t IDR;
+	__vo uint32_t ODR;
+	__vo uint32_t BSPR;
+	__vo uint32_t LCKR;
+	__vo uint32_t AFR[2];
+}GPIO_RegDef_t;
+
+GPIO_RegDef_t *pGPIOA;
+
+//I2C Register definition
+
+typedef struct{
+	__vo uint32_t CR1;
+	__vo uint32_t CR2;
+	__vo uint32_t OAR1;
+	__vo uint32_t OAR2;
+	__vo uint32_t DR;
+	__vo uint32_t SR1;
+	__vo uint32_t SR2;
+	__vo uint32_t CCR;
+	__vo uint32_t TRISE;
+	__vo uint32_t FLTR;
+}I2C_RegDef_t;
+
+//SPI Register definition
+
+typedef struct{
+	__vo uint32_t CR1[2];
+	__vo uint32_t SR;
+	__vo uint32_t DR;
+	__vo uint32_t CRCPR;
+	__vo uint32_t RXCRCR;
+	__vo uint32_t TXCRCR;
+	__vo uint32_t I2SCFGR;
+	__vo uint32_t I2SPR;
+}SPI_RegDef_t;
+
+//UART Register definition
+
+typedef struct{
+	__vo uint32_t SR;
+	__vo uint32_t DR;
+	__vo uint32_t BRR;
+	__vo uint32_t CR1;
+	__vo uint32_t CR2;
+	__vo uint32_t CR3;
+	__vo uint32_t GTPR;
+}USART_RegDef_t;
+
+typedef struct{
+	__vo uint32_t CR;
+	__vo uint32_t PLLCFGR;
+	__vo uint32_t CFGR;
+	__vo uint32_t CIR;
+	__vo uint32_t AHB1RSTR;
+	__vo uint32_t AHB2RSTR;
+	     uint32_t RESERVED1[2];
+    __vo uint32_t APB1RSTR;
+    __vo uint32_t APB2RSTR;
+         uint32_t RESERVED2[2];
+    __vo uint32_t AHB1ENR;
+    __vo uint32_t AHB2ENR;
+         uint32_t RESERVED3[2];
+    __vo uint32_t APB1ENR;
+    __vo uint32_t APB2ENR;
+         uint32_t RESERVED4[2];
+    __vo uint32_t AHB1LPENR;
+    __vo uint32_t AHB2LPENR;
+         uint32_t RESERVED5[2];
+    __vo uint32_t APB1LPENR;
+    __vo uint32_t APB2LPENR;
+         uint32_t RESERVED6[2];
+    __vo uint32_t BDCR;
+    __vo uint32_t CSR;
+         uint32_t RESERVED[2];
+    __vo uint32_t SSCGR;
+    __vo uint32_t PLLI2SCFGR;
+    __vo uint32_t DCKCFGR;
+}RCC_RegDef_t;
+
+#define RCC         (RCC_RegDef_t *)(RCC_PERIPH_BASEADDR)
+
+#define GPIOA       (GPIO_RegDef_t *)(GPIOA_PERIPH_BASEADDR)
+#define GPIOB       (GPIO_RegDef_t *)(GPIOB_PERIPH_BASEADDR)
+#define GPIOC       (GPIO_RegDef_t *)(GPIOC_PERIPH_BASEADDR)
+#define GPIOD       (GPIO_RegDef_t *)(GPIOD_PERIPH_BASEADDR)
+#define GPIOE       (GPIO_RegDef_t *)(GPIOE_PERIPH_BASEADDR)
+#define GPIOF       (GPIO_RegDef_t *)(GPIOF_PERIPH_BASEADDR)
+#define GPIOG       (GPIO_RegDef_t *)(GPIOG_PERIPH_BASEADDR)
+#define GPIOH       (GPIO_RegDef_t *)(GPIOH_PERIPH_BASEADDR)
+
+#define I2C1        (I2C_RegDef_t *)(I2C1_PERIPH_BASEADDR)
+#define I2C2        (I2C_RegDef_t *)(I2C2_PERIPH_BASEADDR)
+#define I2C3        (I2C_RegDef_t *)(I2C3_PERIPH_BASEADDR)
+
+#define SPI1        (SPI_RegDef_t *)(SPI1_PERIPH_BASEADDR)
+#define SPI2        (SPI_RegDef_t *)(SPI2_PERIPH_BASEADDR)
+#define SPI3        (SPI_RegDef_t *)(SPI3_PERIPH_BASEADDR)
+#define SPI4        (SPI_RegDef_t *)(SPI4_PERIPH_BASEADDR)
+
+#define USART1      (USART_RegDef_t *)(USART1_PERIPH_BASEADDR)
+#define USART2      (USART_RegDef_t *)(USART2_PERIPH_BASEADDR)
+#define USART6      (USART_RegDef_t *)(USART6_PERIPH_BASEADDR)
+
+//CLOCK Enable macros
+
+#define GPIOA_PCLK_EN()   (RCC->AHB1ENR|=(1<<0))
+#define GPIOB_PCLK_EN()   (RCC->AHB1ENR|=(1<<1))
+#define GPIOC_PCLK_EN()   (RCC->AHB1ENR|=(1<<2))
+#define GPIOD_PCLK_EN()   (RCC->AHB1ENR|=(1<<3))
+#define GPIOE_PCLK_EN()   (RCC->AHB1ENR|=(1<<4))
+#define GPIOF_PCLK_EN()   (RCC->AHB1ENR|=(1<<5))
+#define GPIOG_PCLK_EN()   (RCC->AHB1ENR|=(1<<6))
+#define GPIOH_PCLK_EN()   (RCC->AHB1ENR|=(1<<7))
+
+// CLOCK DISABLE MACROS
+
+#define GPIOA_PCLK_DI()  (RCC->AHB1ENR &=~(1<<0))
+#define GPIOB_PCLK_DI()  (RCC->AHB1ENR &=~(1<<1))
+#define GPIOC_PCLK_DI()  (RCC->AHB1ENR &=~(1<<2))
+#define GPIOD_PCLK_DI()  (RCC->AHB1ENR &=~(1<<3))
+#define GPIOE_PCLK_DI()  (RCC->AHB1ENR &=~(1<<4))
+#define GPIOF_PCLK_DI()  (RCC->AHB1ENR &=~(1<<5))
+#define GPIOG_PCLK_DI()  (RCC->AHB1ENR &=~(1<<6))
+#define GPIOH_PCLK_DI()  (RCC->AHB1ENR &=~(1<<7))
+
+#define I2C1_PCLK_EN()   (RCC->APB1ENR|=(1<<0))//?WHICH BIT
+
+
+//#define ENABLE
+//#define DISABLE
+
+#endif /* INC_STM32F401XX_H_ */
+
+
+

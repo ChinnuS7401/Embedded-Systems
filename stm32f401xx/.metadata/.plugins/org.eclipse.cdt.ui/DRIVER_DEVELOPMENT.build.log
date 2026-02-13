@@ -1,0 +1,210 @@
+19:01:50 **** Build of configuration Debug for project DRIVER_DEVELOPMENT ****
+make -j12 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f401vctx.d" -MT"Startup/startup_stm32f401vctx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f401vctx.o" "../Startup/startup_stm32f401vctx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401C_DISCO -DSTM32F4 -DSTM32F401VCTx -c -I../Inc -I"C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401C_DISCO -DSTM32F4 -DSTM32F401VCTx -c -I../Inc -I"C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401C_DISCO -DSTM32F4 -DSTM32F401VCTx -c -I../Inc -I"C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401C_DISCO -DSTM32F4 -DSTM32F401VCTx -c -I../Inc -I"C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/toggle.d" -MT"Src/toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/toggle.o"
+arm-none-eabi-gcc "../DRIVERSS/Src/stm32f401xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F401C_DISCO -DSTM32F4 -DSTM32F401VCTx -c -I../Inc -I"C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"DRIVERSS/Src/stm32f401xx_gpio_driver.d" -MT"DRIVERSS/Src/stm32f401xx_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "DRIVERSS/Src/stm32f401xx_gpio_driver.o"
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+In file included from C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx_gpio_driver.h :19,
+                 from ../DRIVERSS/Src/stm32f401xx_gpio_driver.c:16:
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c: In function 'GPIO_PeriClockControl':
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:198:31: error: invalid type argument of '->' (have 'unsigned int')
+  198 | #define GPIOA_PCLK_EN()   (RCC->AHB1ENR|=(1<<0))
+      |                               ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:23:25: note: in expansion of macro 'GPIOA_PCLK_EN'
+   23 |                         GPIOA_PCLK_EN();
+      |                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:25:26: error: 'pGPIO' undeclared (first use in this function); did you mean 'pGPIOx'?
+   25 |                 else if (pGPIO==GPIOB)
+      |                          ^~~~~
+      |                          pGPIOx
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:25:26: note: each undeclared identifier is reported only once for each function it appears in
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:199:31: error: invalid type argument of '->' (have 'unsigned int')
+  199 | #define GPIOB_PCLK_EN()   (RCC->AHB1ENR|=(1<<1))
+      |                               ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:27:25: note: in expansion of macro 'GPIOB_PCLK_EN'
+   27 |                         GPIOB_PCLK_EN();
+      |                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:29:25: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   29 |                 else if(pGPIOx=GPIOC)
+      |                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:200:31: error: invalid type argument of '->' (have 'unsigned int')
+  200 | #define GPIOC_PCLK_EN()   (RCC->AHB1ENR|=(1<<2))
+      |                               ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:31:25: note: in expansion of macro 'GPIOC_PCLK_EN'
+   31 |                         GPIOC_PCLK_EN();
+      |                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:33:25: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   33 |                 else if(pGPIOx=GPIOD)
+      |                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:201:31: error: invalid type argument of '->' (have 'unsigned int')
+  201 | #define GPIOD_PCLK_EN()   (RCC->AHB1ENR|=(1<<3))
+      |                               ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:35:25: note: in expansion of macro 'GPIOD_PCLK_EN'
+   35 |                         GPIOD_PCLK_EN();
+      |                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:37:25: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   37 |                 else if(pGPIOx=GPIOE)
+      |                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:203:31: error: invalid type argument of '->' (have 'unsigned int')
+  203 | #define GPIOF_PCLK_EN()   (RCC->AHB1ENR|=(1<<5))
+      |                               ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:39:25: note: in expansion of macro 'GPIOF_PCLK_EN'
+   39 |                         GPIOF_PCLK_EN();
+      |                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:41:25: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   41 |                 else if(pGPIOx=GPIOF)
+      |                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:203:31: error: invalid type argument of '->' (have 'unsigned int')
+  203 | #define GPIOF_PCLK_EN()   (RCC->AHB1ENR|=(1<<5))
+      |                               ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:43:25: note: in expansion of macro 'GPIOF_PCLK_EN'
+   43 |                         GPIOF_PCLK_EN();
+      |                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:45:25: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   45 |                 else if(pGPIOx=GPIOG)
+      |                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:204:31: error: invalid type argument of '->' (have 'unsigned int')
+  204 | #define GPIOG_PCLK_EN()   (RCC->AHB1ENR|=(1<<6))
+      |                               ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:47:25: note: in expansion of macro 'GPIOG_PCLK_EN'
+   47 |                         GPIOG_PCLK_EN();
+      |                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:49:25: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   49 |                 else if(pGPIOx=GPIOH)
+      |                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:205:31: error: invalid type argument of '->' (have 'unsigned int')
+  205 | #define GPIOH_PCLK_EN()   (RCC->AHB1ENR|=(1<<7))
+      |                               ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:51:25: note: in expansion of macro 'GPIOH_PCLK_EN'
+   51 |                         GPIOH_PCLK_EN();
+      |                         ^~~~~~~~~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:209:30: error: invalid type argument of '->' (have 'unsigned int')
+  209 | #define GPIOA_PCLK_DI()  (RCC->AHB1ENR &=~(1<<0))
+      |                              ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:60:41: note: in expansion of macro 'GPIOA_PCLK_DI'
+   60 |                                         GPIOA_PCLK_DI();
+      |                                         ^~~~~~~~~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:210:30: error: invalid type argument of '->' (have 'unsigned int')
+  210 | #define GPIOB_PCLK_DI()  (RCC->AHB1ENR &=~(1<<1))
+      |                              ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:64:41: note: in expansion of macro 'GPIOB_PCLK_DI'
+   64 |                                         GPIOB_PCLK_DI();
+      |                                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:66:41: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   66 |                                 else if(pGPIOx=GPIOC)
+      |                                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:211:30: error: invalid type argument of '->' (have 'unsigned int')
+  211 | #define GPIOC_PCLK_DI()  (RCC->AHB1ENR &=~(1<<2))
+      |                              ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:68:41: note: in expansion of macro 'GPIOC_PCLK_DI'
+   68 |                                         GPIOC_PCLK_DI();
+      |                                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:70:41: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   70 |                                 else if(pGPIOx=GPIOD)
+      |                                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:212:30: error: invalid type argument of '->' (have 'unsigned int')
+  212 | #define GPIOD_PCLK_DI()  (RCC->AHB1ENR &=~(1<<3))
+      |                              ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:72:57: note: in expansion of macro 'GPIOD_PCLK_DI'
+   72 |                                                         GPIOD_PCLK_DI();
+      |                                                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:74:41: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   74 |                                 else if(pGPIOx=GPIOE)
+      |                                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:214:30: error: invalid type argument of '->' (have 'unsigned int')
+  214 | #define GPIOF_PCLK_DI()  (RCC->AHB1ENR &=~(1<<5))
+      |                              ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:76:57: note: in expansion of macro 'GPIOF_PCLK_DI'
+   76 |                                                         GPIOF_PCLK_DI();
+      |                                                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:78:41: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   78 |                                 else if(pGPIOx=GPIOF)
+      |                                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:214:30: error: invalid type argument of '->' (have 'unsigned int')
+  214 | #define GPIOF_PCLK_DI()  (RCC->AHB1ENR &=~(1<<5))
+      |                              ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:80:57: note: in expansion of macro 'GPIOF_PCLK_DI'
+   80 |                                                         GPIOF_PCLK_DI();
+      |                                                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:82:41: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   82 |                                 else if(pGPIOx=GPIOG)
+      |                                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:215:30: error: invalid type argument of '->' (have 'unsigned int')
+  215 | #define GPIOG_PCLK_DI()  (RCC->AHB1ENR &=~(1<<6))
+      |                              ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:84:57: note: in expansion of macro 'GPIOG_PCLK_DI'
+   84 |                                                         GPIOG_PCLK_DI();
+      |                                                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:86:41: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   86 |                                 else if(pGPIOx=GPIOH)
+      |                                         ^~~~~~
+C:/Users/chinn/OneDrive/Desktop/Embedded_Systems/stm32f401xx/DRIVER_DEVELOPMENT/DRIVERSS/Inc/stm32f401xx.h:216:30: error: invalid type argument of '->' (have 'unsigned int')
+  216 | #define GPIOH_PCLK_DI()  (RCC->AHB1ENR &=~(1<<7))
+      |                              ^~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:88:57: note: in expansion of macro 'GPIOH_PCLK_DI'
+   88 |                                                         GPIOH_PCLK_DI();
+      |                                                         ^~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c: In function 'GPIO_Init':
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:113:104: error: expected ';' before 'pGPIOHandle'
+  113 |                 pGPIOHandle->pGPIOx->MODER &=~(0X3 <<(2* pGPIOHandle -> GPIO_PinConfig.GPIO_PinNumber))
+      |                                                                                                        ^
+      |                                                                                                        ;
+  114 |                 pGPIOHandle->pGPIOx->MODER|=temp;
+      |                 ~~~~~~~~~~~                                                                             
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:125:46: error: 'GPIO_RegDef_t' has no member named 'OPSEEDR'; did you mean 'OSPEEDR'?
+  125 |                         pGPIOHandle->pGPIOx->OPSEEDR |= temp;
+      |                                              ^~~~~~~
+      |                                              OSPEEDR
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:138:158: error: expected ')' before ';' token
+  138 |                                                                         pGPIOHandle->pGPIOx->OTYPER &=~(0X1 <<( pGPIOHandle -> GPIO_PinConfig.GPIO_PinNumber);
+      |                                                                                                        ~                                                     ^
+      |                                                                                                                                                              )
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:152:26: error: expected ';' before '}' token
+  152 |                         }
+      |                          ^
+      |                          ;
+  153 | 
+  154 | }
+      | ~                         
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c: In function 'GPIO_ReadfromInputPort':
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:188:9: error: 'value' undeclared (first use in this function); did you mean 'valu'?
+  188 |         value= (uint16_t)GPIOx->IDR;
+      |         ^~~~~
+      |         valu
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:188:26: error: 'GPIOx' undeclared (first use in this function); did you mean 'pGPIOx'?
+  188 |         value= (uint16_t)GPIOx->IDR;
+      |                          ^~~~~
+      |                          pGPIOx
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:187:18: warning: unused variable 'valu' [-Wunused-variable]
+  187 |         uint16_t valu;
+      |                  ^~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c: In function 'GPIO_WriteToOutputPin':
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:206:13: error: 'value' undeclared (first use in this function); did you mean 'Value'?
+  206 |         if (value==GPIO_PIN_SET)
+      |             ^~~~~
+      |             Value
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:224:1: error: expected declaration or statement at end of input
+  224 | }
+      | ^
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c: In function 'GPIO_ReadfromInputPort':
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:191:1: warning: control reaches end of non-void function [-Wreturn-type]
+  191 | }
+      | ^
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c: At top level:
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:222:6: warning: 'GPIO_ToggleOutputPin' defined but not used [-Wunused-function]
+  222 | void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber){
+      |      ^~~~~~~~~~~~~~~~~~~~
+../DRIVERSS/Src/stm32f401xx_gpio_driver.c:214:6: warning: 'GPIO_WriteToOutputPort' defined but not used [-Wunused-function]
+  214 | void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber){
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+make: *** [DRIVERSS/Src/subdir.mk:19: DRIVERSS/Src/stm32f401xx_gpio_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+
+19:01:50 Build Failed. 27 errors, 17 warnings. (took 417ms)
+
