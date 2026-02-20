@@ -13,10 +13,19 @@
 
 #ifndef INC_STM32F401XX_H_
 #define INC_STM32F401XX_H_
-#include <stdio.h>
+#include <stddef.h>
 #include <stdint.h>
 
 #define __vo  volatile
+
+//PROCESSOR DEFINITIONS
+
+#define NVIC_ISER0  ((__vo uint32_t*)0xE000E100)
+#define NVIC_ISER1  ((__vo uint32_t*)0xE000E104)
+#define NVIC_ISER2  ((__vo uint32_t*)0xE000E108)
+#define NVIC_ISER3  ((__vo uint32_t*)0xE000E10C)
+
+
 
 
 //define memory base address
@@ -169,40 +178,57 @@ typedef struct{
     __vo uint32_t DCKCFGR;
 }RCC_RegDef_t;
 
+typedef struct{
+	__vo uint32_t IMR;
+	__vo uint32_t EMR;
+	__vo uint32_t RTSR;
+	__vo uint32_t FTSR;
+	__vo uint32_t SWIER;
+	__vo uint32_t PR;
+}EXTI_RegDef_t;
+
+typedef struct{
+	__vo uint32_t MEMRMP;
+	__vo uint32_t PMC;
+	__vo uint32_t EXTICR[4];
+	uint32_t RESERVED;
+	__vo uint32_t CMPCR;
+}SYSCFG_RegDef_t;
 #define RCC         (RCC_RegDef_t *)(RCC_PERIPH_BASEADDR)
 
-#define GPIOA       (GPIO_RegDef_t *)(GPIOA_PERIPH_BASEADDR)
-#define GPIOB       (GPIO_RegDef_t *)(GPIOB_PERIPH_BASEADDR)
-#define GPIOC       (GPIO_RegDef_t *)(GPIOC_PERIPH_BASEADDR)
-#define GPIOD       (GPIO_RegDef_t *)(GPIOD_PERIPH_BASEADDR)
-#define GPIOE       (GPIO_RegDef_t *)(GPIOE_PERIPH_BASEADDR)
-#define GPIOF       (GPIO_RegDef_t *)(GPIOF_PERIPH_BASEADDR)
-#define GPIOG       (GPIO_RegDef_t *)(GPIOG_PERIPH_BASEADDR)
-#define GPIOH       (GPIO_RegDef_t *)(GPIOH_PERIPH_BASEADDR)
+#define GPIOA       ((GPIO_RegDef_t *)GPIOA_PERIPH_BASEADDR)
+#define GPIOB       ((GPIO_RegDef_t *)GPIOB_PERIPH_BASEADDR)
+#define GPIOC       ((GPIO_RegDef_t *)GPIOC_PERIPH_BASEADDR)
+#define GPIOD       ((GPIO_RegDef_t *)GPIOD_PERIPH_BASEADDR)
+#define GPIOE       ((GPIO_RegDef_t *)GPIOE_PERIPH_BASEADDR)
+#define GPIOF       ((GPIO_RegDef_t *)GPIOF_PERIPH_BASEADDR)
+#define GPIOG       ((GPIO_RegDef_t *)GPIOG_PERIPH_BASEADDR)
+#define GPIOH       ((GPIO_RegDef_t *)GPIOH_PERIPH_BASEADDR)
 
-#define I2C1        (I2C_RegDef_t *)(I2C1_PERIPH_BASEADDR)
-#define I2C2        (I2C_RegDef_t *)(I2C2_PERIPH_BASEADDR)
-#define I2C3        (I2C_RegDef_t *)(I2C3_PERIPH_BASEADDR)
+#define I2C1        ((I2C_RegDef_t *)I2C1_PERIPH_BASEADDR)
+#define I2C2        ((I2C_RegDef_t *)I2C2_PERIPH_BASEADDR)
+#define I2C3        ((I2C_RegDef_t *)I2C3_PERIPH_BASEADDR)
 
-#define SPI1        (SPI_RegDef_t *)(SPI1_PERIPH_BASEADDR)
-#define SPI2        (SPI_RegDef_t *)(SPI2_PERIPH_BASEADDR)
-#define SPI3        (SPI_RegDef_t *)(SPI3_PERIPH_BASEADDR)
-#define SPI4        (SPI_RegDef_t *)(SPI4_PERIPH_BASEADDR)
+#define SPI1        ((SPI_RegDef_t *)SPI1_PERIPH_BASEADDR)
+#define SPI2        ((SPI_RegDef_t *)SPI2_PERIPH_BASEADDR)
+#define SPI3        ((SPI_RegDef_t *)SPI3_PERIPH_BASEADDR)
+#define SPI4        ((SPI_RegDef_t *)SPI4_PERIPH_BASEADDR)
 
-#define USART1      (USART_RegDef_t *)(USART1_PERIPH_BASEADDR)
-#define USART2      (USART_RegDef_t *)(USART2_PERIPH_BASEADDR)
-#define USART6      (USART_RegDef_t *)(USART6_PERIPH_BASEADDR)
+#define USART1      ((USART_RegDef_t *)USART1_PERIPH_BASEADDR)
+#define USART2      ((USART_RegDef_t *)USART2_PERIPH_BASEADDR)
+#define USART6      ((USART_RegDef_t *)USART6_PERIPH_BASEADDR)
 
 //CLOCK Enable macros
 
-#define GPIOA_PCLK_EN()   (RCC->AHB1ENR|=(1<<0))
-#define GPIOB_PCLK_EN()   (RCC->AHB1ENR|=(1<<1))
-#define GPIOC_PCLK_EN()   (RCC->AHB1ENR|=(1<<2))
-#define GPIOD_PCLK_EN()   (RCC->AHB1ENR|=(1<<3))
-#define GPIOE_PCLK_EN()   (RCC->AHB1ENR|=(1<<4))
-#define GPIOF_PCLK_EN()   (RCC->AHB1ENR|=(1<<5))
-#define GPIOG_PCLK_EN()   (RCC->AHB1ENR|=(1<<6))
-#define GPIOH_PCLK_EN()   (RCC->AHB1ENR|=(1<<7))
+//#define GPIOA_PCLK_EN()    (RCC->AHB1ENR |= (1 << 0))
+#define GPIOA_PCLK_EN()   (RCC->AHB1ENR|= (1<<0))
+#define GPIOB_PCLK_EN()   (RCC->AHB1ENR|= (1<<1))
+#define GPIOC_PCLK_EN()   (RCC->AHB1ENR|= (1<<2))
+#define GPIOD_PCLK_EN()   (RCC->AHB1ENR|= (1<<3))
+#define GPIOE_PCLK_EN()   (RCC->AHB1ENR|= (1<<4))
+#define GPIOF_PCLK_EN()   (RCC->AHB1ENR|= (1<<5))
+#define GPIOG_PCLK_EN()   (RCC->AHB1ENR|= (1<<6))
+#define GPIOH_PCLK_EN()   (RCC->AHB1ENR|= (1<<7))
 
 // CLOCK DISABLE MACROS
 
@@ -215,7 +241,23 @@ typedef struct{
 #define GPIOG_PCLK_DI()  (RCC->AHB1ENR &=~(1<<6))
 #define GPIOH_PCLK_DI()  (RCC->AHB1ENR &=~(1<<7))
 
-#define I2C1_PCLK_EN()   (RCC->APB1ENR|=(1<<0))//?WHICH BIT
+//#define I2C1_PCLK_EN()   (RCC->APB1ENR|=(1<<0))//?WHICH BIT
+/* SPI Clock Enable */
+#define SPI1_PCLK_EN()     (RCC->APB2ENR |= (1 << 12))
+#define SPI2_PCLK_EN()     (RCC->APB1ENR |= (1 << 14))
+#define SPI3_PCLK_EN()     (RCC->APB1ENR |= (1 << 15))
+#define SPI4_PCLK_EN()     (RCC->APB2ENR |= (1 << 13))
+
+/* I2C Clock Enable */
+#define I2C1_PCLK_EN()     (RCC->APB1ENR |= (1 << 21))
+#define I2C2_PCLK_EN()     (RCC->APB1ENR |= (1 << 22))
+#define I2C3_PCLK_EN()     (RCC->APB1ENR |= (1 << 23))
+
+/* USART Clock Enable */
+#define USART1_PCLK_EN()   (RCC->APB2ENR |= (1 << 4))
+#define USART2_PCLK_EN()   (RCC->APB1ENR |= (1 << 17))
+#define USART3_PCLK_EN()   (RCC->APB1ENR |= (1 << 18))
+#define USART6_PCLK_EN()   (RCC->APB2ENR |= (1 << 5))
 
 
 //#define ENABLE

@@ -55,6 +55,9 @@ typedef struct
 #define GPIO_MODE_OUT     1  // OUTPUT MODE, VALUE 01
 #define GPIO_MODE_ALTFN   2  //ALTERNATE FUNCTION, VALUE 10
 #define GPIO_MODE_ANALOG  3  // ANALOG  MODE, VALUE 11
+#define GPIO_MODE_IT_FT   4  //INTERRUPT MODE FALLING EDGE
+#define GPIO_MODE_IT_RT   5  //INTERRUPT MODE RISING EDGE
+#define GPIO_MODE_IT_RFT  6  //RISING AND FALLING EDGE INTERRUPT MODE
 
 #define GPIO_SPEED_LOW    0
 #define GPIO_SPEED_MEDIUM 1
@@ -65,12 +68,12 @@ typedef struct
 #define GPIO_PIN_SET      1
 #define GPIO_PIN_CLEAR    0
 
-#define GPIO_OP_TYPE_PUSHPULL    0
+#define GPIO_OP_TYPE_PP    0
 #define GPIO_OP_TYPE_OD          1
 
 #define GPIO_NO_PUPD      0
-#define GPIO_PULLUP       1
-#define GPIO_PULLDOWN     2
+#define GPIO_PU       1
+#define GPIO_PD     2
 #define GPIO_RESERVED     3
 
 #define ENABLE  1
@@ -85,7 +88,7 @@ uint8_t GPIO_ReadfromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
 uint16_t GPIO_ReadfromInputPort(GPIO_RegDef_t *pGPIOx);
 
 void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Value);
-void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber);
+void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx,uint16_t value);
 
 void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
 
